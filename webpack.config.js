@@ -14,7 +14,7 @@ const postCSSPlugins = [
   require('autoprefixer')
 ]
 
-class RnuafterCompile {
+class RunAfterCompile {
   apply(complier) {
     complier.hooks.done.tap('Copy Images', function(){
       fse.copySync('./app/assets/images', './docs/assets/images')
@@ -26,7 +26,7 @@ let cssConfig = {
       test: /\.css$/i,
     use: ['css-loader', {loader: 'postcss-loader', options: {plugins: postCSSPlugins}}]
   }
-let pages =fse.readdirSync('./app').filter(function(file) {
+let pages = fse.readdirSync('./app').filter(function(file) {
   return file.endsWith('.html')
 }).map(function(page) {
   return new HtmlWebpackPlugin( {
@@ -88,7 +88,7 @@ if (currentTask == 'build') {
   config.plugins.push(
     new CleanWebpackPlugin(), 
     new MiniCssExtractPlugin({filename: 'styles.[chunkhash].css'}),
-    new RnuafterCompile()
+    new RunAfterCompile()
     )
 }
 
