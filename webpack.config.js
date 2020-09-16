@@ -16,7 +16,7 @@ const postCSSPlugins = [
 
 class RunAfterCompile {
   apply(compiler) {
-    complier.hooks.done.tap('Copy Images', function(){
+    compiler.hooks.done.tap('Copy Images', function() {
       fse.copySync('./app/assets/images', './docs/assets/images')
     })
 
@@ -24,7 +24,7 @@ class RunAfterCompile {
 }
 let cssConfig = {
       test: /\.css$/i,
-    use: ['css-loader', {loader: 'postcss-loader', options: {plugins: postCSSPlugins}}]
+    use: ['css-loader?url=false', {loader: 'postcss-loader', options: {plugins: postCSSPlugins}}]
   }
 let pages = fse.readdirSync('./app').filter(function(file) {
   return file.endsWith('.html')
