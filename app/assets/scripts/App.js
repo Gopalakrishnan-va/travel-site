@@ -3,7 +3,7 @@ import 'lazysizes'
 import MobileMenu from './modules/MobileMenu'
 import RevealOnScroll from './modules/RevealOnScroll'
 import StickyHeader from './modules/StickyHeader'
-
+import Modal from './modules/Modal'
 
 new StickyHeader()
 new RevealOnScroll(document.querySelectorAll(".feature-item"), 75)
